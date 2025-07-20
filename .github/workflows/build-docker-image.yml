@@ -29,9 +29,9 @@ jobs:
           context: . # Dockerfile 的上下文路径，. 表示当前仓库的根目录
           file: ./Dockerfile # Dockerfile 的路径
           push: true # 构建完成后推送镜像到仓库
-          tags: | 
-            ${{ env.DOCKER_IMAGE_NAME }}:latest # 最新版本标签
-            ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }} # 使用 Git commit SHA 作为标签，方便版本追溯
+          tags: 
+            - ${{ env.DOCKER_IMAGE_NAME }}:latest
+            - ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
           # 上面两行是实际的标签定义，下面的注释是给 YAML 文件看的，而不是标签的一部分
           # ${{ env.DOCKER_IMAGE_NAME }}:latest 是最新版本标签
           # ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }} 是使用 commit SHA 作为标签，方便版本追溯  
