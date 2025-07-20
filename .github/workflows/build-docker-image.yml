@@ -40,7 +40,7 @@ jobs:
             REACT_APP_SHOW_BALANCE=${{ env.REACT_APP_SHOW_BALANCE }}
             REACT_APP_SHOW_ICONGITHUB=${{ env.REACT_APP_SHOW_ICONGITHUB }}
           tags: |
-            ${{ env.DOCKER_IMAGE_NAME }}:latest
+            ${{ env.DOCKER_IMAGE_NAME }}:test
             ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
           # 上面两行是实际的标签定义，下面的注释是给 YAML 文件看的，而不是标签的一部分
           # ${{ env.DOCKER_IMAGE_NAME }}:latest 是最新版本标签
