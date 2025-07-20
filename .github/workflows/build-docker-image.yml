@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main # 当代码推送到 main 分支时触发此工作流
+      - test # 当代码推送到 test 分支时触发此工作流
 
 env:
   # 定义镜像名称，请替换为你的 Docker Hub 用户名和镜像名
