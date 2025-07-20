@@ -8,6 +8,11 @@ on:
 env:
   # 定义镜像名称，请替换为你的 Docker Hub 用户名和镜像名
   DOCKER_IMAGE_NAME: yanghongming2000/neko-api-key-tool
+  # 定义环境变量（可以在这里修改配置）
+  REACT_APP_BASE_URL: '{"server1": "https://www.xidian-ai.work"}'
+  REACT_APP_SHOW_DETAIL: true
+  REACT_APP_SHOW_BALANCE: true
+  REACT_APP_SHOW_ICONGITHUB: true
 
 jobs:
   build-and-push:
@@ -29,6 +34,11 @@ jobs:
           context: . # Dockerfile 的上下文路径，. 表示当前仓库的根目录
           file: ./Dockerfile # Dockerfile 的路径
           push: true # 构建完成后推送镜像到仓库
+          build-args: |
+            REACT_APP_BASE_URL=${{ env.REACT_APP_BASE_URL }}
+            REACT_APP_SHOW_DETAIL=${{ env.REACT_APP_SHOW_DETAIL }}
+            REACT_APP_SHOW_BALANCE=${{ env.REACT_APP_SHOW_BALANCE }}
+            REACT_APP_SHOW_ICONGITHUB=${{ env.REACT_APP_SHOW_ICONGITHUB }}
           tags: |
             ${{ env.DOCKER_IMAGE_NAME }}:latest
             ${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
